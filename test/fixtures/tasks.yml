@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  status: MyString
+  priority: MyString
+  term: 1.5
+  belongs_to: 
+  week: one
+
+two:
+  name: MyString
+  status: MyString
+  priority: MyString
+  term: 1.5
+  belongs_to: 
+  week: two
