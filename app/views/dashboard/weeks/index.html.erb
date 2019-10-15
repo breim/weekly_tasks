@@ -2,50 +2,54 @@
   <%= link_to 'New', new_dashboard_week_path, class: 'btn btn-primary' %>
 </div>
 
-
-
 <h1>Weeks</h1>
 <hr/>
 
-  
 <% @weeks.each do |week| %>
   <div class="row">
-    <div class="col-5">
-      <h4><%= week.name %></h4>
-    </div>
-    <div class="col-7">
-      <div class="float-right">
-        <%= link_to 'Destroy', dashboard_week_path(week), method: :delete, data: { confirm: 'Are you sure?' } %> | 
-        <%= link_to 'Edit', edit_dashboard_week_path(week) %>
-      </div>
-    </div> 
-  </div>
-  <div class="row">
     <div class="col-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Task</th>
-            <th>Assignee</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Term</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% week.tasks.each do |task| %>
-            <tr>
-              <td><%= task.name %></td>
-              <td><%= task.user.try(:name) %></td>
-              <td><%= task.status %></td>
-              <td><%= task.priority %></td>
-              <td><%= task.term %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="card form-group">
+        <div class="card-header">
+          <h5><%= week.name %></h5>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-end">
+            <%= link_to 'Edit', edit_dashboard_week_path(week) %> | 
+            <%= link_to 'Delete', dashboard_week_path(week), data: { confirm: "Are you sure?" }, method: :delete %> 
+          </div>
+          <br/>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Assignee</th>
+                <th style="width: 16.66%">Status</th>
+                <th style="width: 16.66%">Priority</th>
+                <th>Term</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% week.tasks.each do |task| %>
+              <tr>
+                <td><%= task.name %></td>
+                <td>
+                  <img src='<%= gravatar_image(task.user.try(:email)) %>' class='profile-image-sm img-circle' />
+                  <%= task.user.try(:name) %>  
+                </td>
+                <td class='colored-item' bgcolor="<%= status_color(task.status) %>"><%= task.status %></td>
+                <td class='colored-item' bgcolor="<%= priority_color(task.priority) %>"><%= task.priority %></td>
+                <td><%= task.term %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>      
+          Total term: <strong><%= week.total_term %> days</strong>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
 
-<%= render 'shared/paginate', collection: @weeks %>
+<div class="d-flex justify-content-center">
+  <%= render 'shared/paginate', collection: @weeks %>
+</div>

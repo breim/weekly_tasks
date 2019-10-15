@@ -6,5 +6,9 @@ class Week < ApplicationRecord
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
 
   # Pagination
-  self.per_page = 5
+  self.per_page = 10
+
+  def total_term
+		tasks.sum(:term)
+  end
 end

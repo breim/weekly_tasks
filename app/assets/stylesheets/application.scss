@@ -1,4 +1,4 @@
-.container{
+.container {
 	margin-top: 70px;
 }
 
@@ -6,10 +6,20 @@
 	border-radius: 50%;
 }
 
-.profile-image{
+.profile-image {
 	max-width: 50px;
 }
 
-.table td, .table th{
-	border-top: none !important;	
+.profile-image-sm {
+	max-width: 20px;
+}
+
+.th {
+	text-align: center;
+}
+
+.colored-item {
+	color: #fff;
+	text-align: center;
+	border: 1px solid #fff;
 }

@@ -31,7 +31,7 @@ module Dashboard
 
     def update
       @week.update(week_params)
-      respond_with(:dashboard, @week)
+      respond_with(:dashboard, @weeks)
     end
 
     def destroy
