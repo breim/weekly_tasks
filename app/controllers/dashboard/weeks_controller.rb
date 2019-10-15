@@ -8,35 +8,34 @@ module Dashboard
 
     def index
       @weeks = Week.all
-      respond_with(@weeks)
+      respond_with(:dashboard, @weeks)
     end
 
     def show
-      respond_with(@week)
+      respond_with(:dashboard, @week)
     end
 
     def new
       @week = Week.new
-      @week.user_id = current_user.id
-      respond_with(@week)
+      respond_with(:dashboard, @week)
     end
 
     def edit; end
 
     def create
       @week = Week.new(week_params)
-      @week.save
-      respond_with(@week)
+      @week.user_id = current_user.id
+      respond_with(:dashboard, @week)
     end
 
     def update
       @week.update(week_params)
-      respond_with(@week)
+      respond_with(:dashboard, @week)
     end
 
     def destroy
       @week.destroy
-      respond_with(@week)
+      respond_with(:dashboard, @week)
     end
 
     private
