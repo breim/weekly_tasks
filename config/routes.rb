@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+ 	root 'dashboard/tasks#index'
+ 
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get '/dashboard', to: 'dashboard/tasks#index'
+  namespace :dashboard, do
+    resources :tasks
+  end
 end
