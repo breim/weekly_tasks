@@ -16,10 +16,15 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+
+  <%= form.fields_for :tasks do |task| %>
+    <%= render 'task_fields', :f => task %>
+  <% end %>
+  
+  <div class='links'>
+    <%= link_to_add_association 'add task', f, :tasks %>
   </div>
+  
 
   <div class="actions">
     <%= form.submit %>
