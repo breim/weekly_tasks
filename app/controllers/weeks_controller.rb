@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class WeeksController < ApplicationController
-  before_action :set_week, only: [:show, :edit, :update, :destroy]
+  before_action :set_week, only: %i[show edit update destroy]
 
   respond_to :html
 
@@ -14,11 +16,11 @@ class WeeksController < ApplicationController
 
   def new
     @week = Week.new
+    @week.user_id = current_user.id
     respond_with(@week)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @week = Week.new(week_params)
@@ -37,11 +39,12 @@ class WeeksController < ApplicationController
   end
 
   private
-    def set_week
-      @week = Week.find(params[:id])
-    end
 
-    def week_params
-      params.require(:week).permit(:name, :user_id)
-    end
+  def set_week
+    @week = Week.find(params[:id])
+  end
+
+  def week_params
+    params.require(:week).permit(:name, :user_id, tasks_attributes: %i[id name status priority term _destroy])
+  end
 end
