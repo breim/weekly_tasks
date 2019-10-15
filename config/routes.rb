@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/dashboard', to: 'dashboard/tasks#index'
-  namespace :dashboard, do
+  namespace :dashboard do
     resources :tasks
   end
 end
