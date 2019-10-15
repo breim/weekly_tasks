@@ -9,7 +9,7 @@ module Dashboard
 
     # include Security
 
-    layout 'dashboard'
+    # layout 'dashboard'
 
     private
 

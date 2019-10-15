@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  resources :weeks
- 	root 'dashboard/tasks#index'
+ 	root 'dashboard/weeks#index'
  
   devise_for :users
 
-  get '/dashboard', to: 'dashboard/tasks#index'
+  get '/dashboard', to: 'dashboard/weeks#index'
   namespace :dashboard do
-    resources :tasks
+    resources :weeks
   end
 end

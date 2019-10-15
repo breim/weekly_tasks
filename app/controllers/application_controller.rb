@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(_resource)
-    dashboard_tasks_path
+    dashboard_weeks_path
   end
 end
