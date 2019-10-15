@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :weeks
  	root 'dashboard/tasks#index'
  
   devise_for :users
