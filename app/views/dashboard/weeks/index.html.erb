@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Weeks</h1>
 
+<div class='float-right'>
+  <%= link_to 'New', new_dashboard_week_path, class: 'btn btn-primary' %>
+</div>
+
+<h1>Weeks</h1>
+<hr/>
 <table>
   <thead>
     <tr>
@@ -23,7 +28,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Week', new_dashboard_week_path %>
