@@ -7,7 +7,7 @@ module Dashboard
     respond_to :html
 
     def index
-      @weeks = Week.order(created_at: :desc)
+      @weeks = Week.paginate(page: params[:page]).order(created_at: :desc)
       respond_with(:dashboard, @weeks)
     end
 
