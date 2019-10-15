@@ -25,7 +25,8 @@ module Dashboard
     def create
       @week = Week.new(week_params)
       @week.user_id = current_user.id
-      respond_with(:dashboard, @week)
+      @week.save
+      respond_with(:dashboard, @weeks)
     end
 
     def update

@@ -11,23 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
 
   <%= form.fields_for :tasks do |task| %>
-    <%= render 'task_fields', :f => task %>
+    <%= render 'task_fields', f: task %>
   <% end %>
   
-  <div class='links'>
-    <%= link_to_add_association 'add task', form, :tasks %>
+  <div class='form-group links'>
+    <%= link_to_add_association 'add task', form, :tasks, class: 'btn btn-outline-primary btn-sm' %>
   </div>
   
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="float-right">
+    <%= link_to 'Back', dashboard_weeks_path, class: 'btn btn-outline-secondary' %>
+    <%= form.submit 'Save', class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
 
