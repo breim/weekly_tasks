@@ -1,0 +1,4 @@
+development:
+  TASKS_DATABASE_USER: 'henriquebreim'
+  TASKS_DATABASE_PASSWORD: ''
+  TASKS_DATABASE_HOST: 'localhost'
